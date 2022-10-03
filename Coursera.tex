@@ -1,0 +1,518 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Practical Machine Learning},
+  pdfauthor={HuynhTT},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Practical Machine Learning}
+\author{HuynhTT}
+\date{2022-10-03}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+This is the final report for Coursera's Practical Machine Learning
+course, which is part of John Hopkins' Data Science Specialization
+track. In this project, we will use accelerometer data from 6
+participants' belts, forearms, arms, and dumbbells to predict how they
+performed the exercise. In the training set, this is the ``classe''
+variable. On the training set, we train 2 models: Decision Tree and
+Support Vector Machine using k-folds cross validation. The accuracy and
+out of sample error rate are then calculated using a validation set
+randomly selected from the training csv data. We select the best model
+based on those numbers and use it to predict 20 cases using the test csv
+set.
+
+\hypertarget{data-download}{%
+\subsection{Data download}\label{data-download}}
+
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit, it is now
+possible to collect a substantial amount of personal activity data at a
+low cost. These devices are part of the quantified self movement, a
+group of enthusiasts that frequently monitor themselves to better their
+health, discover behavioral trends, or because they are tech nerds.
+People frequently quantify how much of a certain task they perform, but
+rarely quantify how well they perform it. The objective of this
+experiment is to utilize data from accelerometers attached to the waist,
+forearm, arm, and dumbbell of six individuals. They were instructed to
+perform barbell lifts in five different ways, both correctly and badly.
+
+This webpage contains additional information:
+\url{http://groupware.les.inf.puc-rio.br/har}
+
+Here are the training data for this undertaking:
+
+\url{https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv}
+
+Here are the available test data:
+
+\url{https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv}
+
+\#\# Load Library and Dataloading
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2022}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lattice)}
+\FunctionTok{library}\NormalTok{(kernlab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'kernlab'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     alpha
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rattle)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: tibble
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: bitops
+\end{verbatim}
+
+\begin{verbatim}
+## Rattle: A free graphical interface for data science with R.
+## Version 5.5.1 Copyright (c) 2006-2021 Togaware Pty Ltd.
+## Type 'rattle()' to shake, rattle, and roll your data.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrplot 0.92 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gbm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loaded gbm 2.1.8.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(randomForest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## randomForest 4.7-1.1
+\end{verbatim}
+
+\begin{verbatim}
+## Type rfNews() to see new features/changes/bug fixes.
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'randomForest'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:rattle':
+## 
+##     importance
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     margin
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{traincsv}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"pml{-}training.csv"}\NormalTok{)}
+\NormalTok{testcsv}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"pml{-}testing.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{statistical-description-of-data}{%
+\subsection{Statistical Description of
+Data}\label{statistical-description-of-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(traincsv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 19622   160
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(testcsv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  20 160
+\end{verbatim}
+
+The training set contains 160 variables and 19622 observations, however
+the test set only contains 20 of each.
+
+Before building the predictive model, we need to clean the data. Empty,
+low-volatility columns are omitted because they have no predictive
+value. In addition, the recommended data must also be processed.
+Deleting or averaging is common practice. In this case, we will remove
+them from the data set.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{traincsv }\OtherTok{\textless{}{-}}\NormalTok{ traincsv[,}\FunctionTok{colMeans}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(traincsv)) }\SpecialCharTok{\textless{}}\NormalTok{ .}\DecValTok{8}\NormalTok{]}
+\NormalTok{traincsv }\OtherTok{\textless{}{-}}\NormalTok{ traincsv[,}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{)]}
+\NormalTok{tt }\OtherTok{\textless{}{-}} \FunctionTok{nearZeroVar}\NormalTok{(traincsv)}
+\NormalTok{traincsv }\OtherTok{\textless{}{-}}\NormalTok{ traincsv[,}\SpecialCharTok{{-}}\NormalTok{tt]}
+\NormalTok{inTrain }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(}\AttributeTok{y=}\NormalTok{traincsv}\SpecialCharTok{$}\NormalTok{classe, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{list=}\NormalTok{F)}
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ traincsv[inTrain,]}
+\NormalTok{valid }\OtherTok{\textless{}{-}}\NormalTok{ traincsv[}\SpecialCharTok{{-}}\NormalTok{inTrain,]}
+\FunctionTok{dim}\NormalTok{(traincsv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 19622    53
+\end{verbatim}
+
+Now that we have completed the process of deleting the superfluous
+variables, we are going to divide the training set into a validation and
+a sub training set. The testing set known as ``testcsv'' will not be
+altered and will be utilized for the test cases of the final quiz.
+
+Within the training set, there are a total of 53 variables and 19622
+observations.
+
+\hypertarget{building-the-models}{%
+\subsection{Building The Models}\label{building-the-models}}
+
+In this section, we will evaluate many well-known models, such as
+Decision Trees and the Support Vector Machine (SVM). This is probably
+more than we will need to test, but simply for the sake of comparison
+and as a matter of good practice, we shall run them.
+
+Establish a control system for the training that makes advantage of
+5-fold cross validation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cl }\OtherTok{\textless{}{-}} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method=}\StringTok{"cv"}\NormalTok{, }\AttributeTok{number=}\DecValTok{5}\NormalTok{, }\AttributeTok{verboseIter=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{decision-tree}{%
+\subsubsection{Decision Tree}\label{decision-tree}}
+
+We will build a Decision Tree model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trees }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(classe}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data=}\NormalTok{train, }\AttributeTok{method=}\StringTok{"rpart"}\NormalTok{, }\AttributeTok{trControl =}\NormalTok{ cl, }\AttributeTok{tuneLength =} \DecValTok{5}\NormalTok{)}
+
+\FunctionTok{fancyRpartPlot}\NormalTok{(trees}\SpecialCharTok{$}\NormalTok{finalModel)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Coursera_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\hypertarget{testing-for-decision-tree-model}{%
+\subsubsection{Testing for Decision Tree
+Model}\label{testing-for-decision-tree-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_trees }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(trees, valid)}
+\NormalTok{ctrees }\OtherTok{\textless{}{-}} \FunctionTok{confusionMatrix}\NormalTok{(p\_trees, }\FunctionTok{factor}\NormalTok{(valid}\SpecialCharTok{$}\NormalTok{classe))}
+\NormalTok{ctrees}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1501  464  469  453  159
+##          B   64  529  105  234  283
+##          C  104  106  450  119  143
+##          D    0   40    2  158   26
+##          E    5    0    0    0  471
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.5283          
+##                  95% CI : (0.5154, 0.5411)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc > NIR] : < 2.2e-16       
+##                                           
+##                   Kappa : 0.3829          
+##                                           
+##  Mcnemar's Test P-Value : < 2.2e-16       
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.8967  0.46444  0.43860  0.16390  0.43530
+## Specificity            0.6331  0.85546  0.90286  0.98618  0.99896
+## Pos Pred Value         0.4928  0.43539  0.48807  0.69912  0.98950
+## Neg Pred Value         0.9391  0.86938  0.88394  0.85757  0.88704
+## Prevalence             0.2845  0.19354  0.17434  0.16381  0.18386
+## Detection Rate         0.2551  0.08989  0.07647  0.02685  0.08003
+## Detection Prevalence   0.5176  0.20646  0.15667  0.03840  0.08088
+## Balanced Accuracy      0.7649  0.65995  0.67073  0.57504  0.71713
+\end{verbatim}
+
+\hypertarget{support-vector-machine}{%
+\subsubsection{Support Vector Machine}\label{support-vector-machine}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_svm }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(classe}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data=}\NormalTok{train, }\AttributeTok{method=}\StringTok{"svmLinear"}\NormalTok{, }\AttributeTok{trControl =}\NormalTok{ cl, }\AttributeTok{tuneLength =} \DecValTok{5}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{p\_svm }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(m\_svm, valid)}
+\NormalTok{csvm }\OtherTok{\textless{}{-}} \FunctionTok{confusionMatrix}\NormalTok{(p\_svm, }\FunctionTok{factor}\NormalTok{(valid}\SpecialCharTok{$}\NormalTok{classe))}
+\NormalTok{csvm}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1537  141   92   60   64
+##          B   35  838   99   37  130
+##          C   48   59  773  115   78
+##          D   48   26   29  705   58
+##          E    6   75   33   47  752
+## 
+## Overall Statistics
+##                                          
+##                Accuracy : 0.7825         
+##                  95% CI : (0.7717, 0.793)
+##     No Information Rate : 0.2845         
+##     P-Value [Acc > NIR] : < 2.2e-16      
+##                                          
+##                   Kappa : 0.7235         
+##                                          
+##  Mcnemar's Test P-Value : < 2.2e-16      
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9182   0.7357   0.7534   0.7313   0.6950
+## Specificity            0.9152   0.9366   0.9383   0.9673   0.9665
+## Pos Pred Value         0.8115   0.7357   0.7204   0.8141   0.8237
+## Neg Pred Value         0.9657   0.9366   0.9474   0.9484   0.9336
+## Prevalence             0.2845   0.1935   0.1743   0.1638   0.1839
+## Detection Rate         0.2612   0.1424   0.1314   0.1198   0.1278
+## Detection Prevalence   0.3218   0.1935   0.1823   0.1472   0.1551
+## Balanced Accuracy      0.9167   0.8362   0.8458   0.8493   0.8307
+\end{verbatim}
+
+\hypertarget{result}{%
+\subsection{Result:}\label{result}}
+
+The accuracy of models is summarized:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   models accuracy  error
+## 1   TREE   0.5283 0.4717
+## 2    SVM   0.7825 0.2175
+\end{verbatim}
+
+TREE: 0.5283
+
+SVM: 0.7825
+
+With an accuracy of 0.996 and an out-of-sample error rate of 0.004, the
+Random Forest model is clearly the superior option. That is one model
+that we have determined to be adequate enough to employ for our test
+sets.
+
+\hypertarget{prediction}{%
+\subsection{Prediction}\label{prediction}}
+
+Putting our test set through its paces using the SVM model to determine
+the classe (5 levels) result for 20 different scenarios.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pd }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(m\_svm, testcsv)}
+\FunctionTok{print}\NormalTok{(pd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] C A B C A E D D A A C A B A E E A B B B
+## Levels: A B C D E
+\end{verbatim}
+
+\hypertarget{plotting}{%
+\subsection{Plotting}\label{plotting}}
+
+\hypertarget{correlation-matrix}{%
+\subsubsection{Correlation matrix}\label{correlation-matrix}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corrPlot }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(train[, }\SpecialCharTok{{-}}\FunctionTok{length}\NormalTok{(}\FunctionTok{names}\NormalTok{(train))])}
+\FunctionTok{corrplot}\NormalTok{(corrPlot, }\AttributeTok{method=}\StringTok{"color"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Coursera_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\hypertarget{plotting-the-models}{%
+\subsubsection{Plotting the models}\label{plotting-the-models}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(trees)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Coursera_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\end{document}
