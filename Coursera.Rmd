@@ -1,0 +1,158 @@
+---
+title: "Practical Machine Learning"
+author: "HuynhTT"
+date: "2022-10-03"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introduction
+This is the final report for Coursera's Practical Machine Learning course, which is part of John Hopkins' Data Science Specialization track.
+In this project, we will use accelerometer data from 6 participants' belts, forearms, arms, and dumbbells to predict how they performed the exercise. In the training set, this is the "classe" variable. On the training set, we train 2 models: Decision Tree and Support Vector Machine using k-folds cross validation. The accuracy and out of sample error rate are then calculated using a validation set randomly selected from the training csv data. We select the best model based on those numbers and use it to predict 20 cases using the test csv set.
+
+## Data download
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit, it is now possible to collect a substantial amount of personal activity data at a low cost. These devices are part of the quantified self movement, a group of enthusiasts that frequently monitor themselves to better their health, discover behavioral trends, or because they are tech nerds. People frequently quantify how much of a certain task they perform, but rarely quantify how well they perform it. The objective of this experiment is to utilize data from accelerometers attached to the waist, forearm, arm, and dumbbell of six individuals. They were instructed to perform barbell lifts in five different ways, both correctly and badly. 
+
+This webpage contains additional information: http://groupware.les.inf.puc-rio.br/har
+
+Here are the training data for this undertaking:
+
+https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
+
+Here are the available test data:
+
+https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
+
+
+ ## Load Library and Dataloading
+ 
+ 
+
+```{r}
+set.seed(2022)
+library(ggplot2)
+library(caret)
+library(lattice)
+library(kernlab)
+library(rattle)
+library(corrplot)
+library(gbm)
+library(randomForest)
+traincsv<-read.csv("pml-training.csv")
+testcsv<-read.csv("pml-testing.csv")
+```
+
+## Statistical Description of Data
+
+
+```{r}
+dim(traincsv)
+dim(testcsv)
+```
+
+The training set contains 160 variables and 19622 observations, however the test set only contains 20 of each.
+
+Before building the predictive model, we need to clean the data. Empty, low-volatility columns are omitted because they have no predictive value. In addition, the recommended data must also be processed. Deleting or averaging is common practice. In this case, we will remove them from the data set.
+
+```{r}
+traincsv <- traincsv[,colMeans(is.na(traincsv)) < .8]
+traincsv <- traincsv[,-c(1:7)]
+tt <- nearZeroVar(traincsv)
+traincsv <- traincsv[,-tt]
+inTrain <- createDataPartition(y=traincsv$classe, p=0.7, list=F)
+train <- traincsv[inTrain,]
+valid <- traincsv[-inTrain,]
+dim(traincsv)
+```
+
+Now that we have completed the process of deleting the superfluous variables, we are going to divide the training set into a validation and a sub training set. The testing set known as "testcsv" will not be altered and will be utilized for the test cases of the final quiz.
+
+Within the training set, there are a total of 53 variables and 19622 observations.
+
+## Building The Models
+
+In this section, we will evaluate many well-known models, such as Decision Trees and the Support Vector Machine (SVM). This is probably more than we will need to test, but simply for the sake of comparison and as a matter of good practice, we shall run them.
+
+Establish a control system for the training that makes advantage of 5-fold cross validation.
+
+```{r}
+cl <- trainControl(method="cv", number=5, verboseIter=FALSE)
+
+```
+
+### Decision Tree
+We will build a Decision Tree model
+
+```{r,message=FALSE}
+trees <- train(classe~., data=train, method="rpart", trControl = cl, tuneLength = 5)
+
+fancyRpartPlot(trees$finalModel)
+```
+
+### Testing for Decision Tree Model
+
+```{r}
+p_trees <- predict(trees, valid)
+ctrees <- confusionMatrix(p_trees, factor(valid$classe))
+ctrees
+```
+
+### Support Vector Machine
+
+```{r}
+m_svm <- train(classe~., data=train, method="svmLinear", trControl = cl, tuneLength = 5, verbose = FALSE)
+
+p_svm <- predict(m_svm, valid)
+csvm <- confusionMatrix(p_svm, factor(valid$classe))
+csvm
+```
+
+## Result:
+
+The accuracy of models is summarized:
+
+```{r,echo=FALSE}
+df <- data.frame(models = c("TREE","SVM"),accuracy=c(0.5283,0.7825))
+df$error <- 1-df$accuracy
+```
+
+```{r}
+print(df)
+```
+
+TREE: 0.5283
+
+SVM: 0.7825
+
+With an accuracy of 0.996 and an out-of-sample error rate of 0.004, the Random Forest model is clearly the superior option. That is one model that we have determined to be adequate enough to employ for our test sets.
+
+## Prediction
+
+Putting our test set through its paces using the SVM model to determine the classe (5 levels) result for 20 different scenarios.
+
+```{r}
+pd <- predict(m_svm, testcsv)
+print(pd)
+```
+
+## Plotting
+
+### Correlation matrix
+
+```{r}
+corrPlot <- cor(train[, -length(names(train))])
+corrplot(corrPlot, method="color")
+```
+
+### Plotting the models
+
+```{r}
+plot(trees)
+```
+
